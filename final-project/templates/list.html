@@ -1,0 +1,17 @@
+<h1>{{ lst.name }}</h1>
+{% extends 'index.html' %}
+
+{% block navigation %}
+ {{ super() }}
+{% endblock %}
+
+{% block main_content %}
+
+{% for sg in recipes %}
+      <strong>{{ sg.title }}</strong>
+      <h4>Ingredients: {{sg.ingredients}}</h4>
+    <br><br>
+{% endfor %}
+
+
+{% endblock %}

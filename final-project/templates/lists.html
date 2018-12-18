@@ -1,0 +1,38 @@
+<h1>My lists</h1>
+
+{% extends 'index.html' %}
+
+{% block navigation %}
+ {{ super() }}
+{% endblock %}
+
+{% block main_content %} 
+{% if not lists %} 
+There are no Recipe Lists lists to show. 
+
+{% else %}
+
+<ul>
+{% for c in lists %}
+    <li>
+    	<a href="http://localhost:5000/list/{{ c.id }}">{{ c.name }}</a>
+    	<form method="POST" action="/delete/{{ c.name }}">
+            {{ form.hidden_tag() }}
+            {{ form.delete() }}
+		</form>
+		<form method="POST" action="/update/{{ c.name }}">
+			{{ form2.hidden_tag() }}
+ 			{{ form2.update() }}
+        </form>
+    </li>
+{% endfor %}
+</ul>
+{% endif %}
+
+<div>
+{% for message in get_flashed_messages() %}
+<strong>*** {{ message }} ***</strong>
+{% endfor %}
+</div>
+
+{% endblock %}

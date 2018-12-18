@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+{% block nav %}
+	{{ super() }}
+{% endblock %}
+
+{% block main_content %}
+
+<form method="GET" action="/letter">
+	{{ form.hidden_tag() }}
+	{{form.letter.label }} {{ form.letter() }}
+	{{ form.submit() }}
+</form>
+
+{% endblock %}

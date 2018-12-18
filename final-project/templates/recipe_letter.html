@@ -1,0 +1,22 @@
+{% extends 'index.html' %}
+
+{% block navigation %}
+ {{ super() }}
+{% endblock %}
+
+{% block main_content %}
+
+<h2>Here are the recipes based on the starting letter that you entered</h2>
+{% if not recipe_lst %}
+<h3> There are no recipes that match the search term '{{letter}}' </h3>
+{% else %}
+
+{% for x in recipe_lst %}
+
+      <strong>{{ x }}</strong>
+    <br><br>
+{% endfor %}
+{% endif %}
+
+
+{% endblock %}

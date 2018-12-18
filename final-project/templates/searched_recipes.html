@@ -1,0 +1,30 @@
+<h1>Search results for {{ term.term }}</h1>
+{% extends 'index.html' %}
+
+{% block navigation %}
+ {{ super() }}
+{% endblock %}
+
+{% block main_content %}
+
+<ul>
+{% for sg in recipes %}
+<li>
+  <h4>{{ sg.title }}</h4>
+  <h5> Ingredients: {{sg.ingredients}}
+</li>
+<br>
+{% endfor %}
+</ul>
+
+{% if not recipes %}
+There are no saved recipes to show.
+{% endif %}
+
+<div>
+{% for message in get_flashed_messages() %}
+<strong>*** {{ message }} ***</strong>
+{% endfor %}
+</div>
+
+{% endblock %}
